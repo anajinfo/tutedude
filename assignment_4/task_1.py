@@ -4,14 +4,15 @@
 # 2. Prints its content line by line.
 # 3. Handles errors gracefully if the file does not exist.
 
+import os
+
 filename = "sample.txt"
 path = f"tutedude/assignment_4/{filename}"
 
-if path.endswith('.txt'):
-    try:
-        with open(path, 'r') as file:
-            print("Reading the file content:")
-            for sl, line in enumerate(file, start=1):
-                print(f"Line {sl}: {line.strip()}")
-    except FileNotFoundError:
-        print(f"Error: The file '{filename}' was not found.")
+if os.path.exists(path):
+    with open(path, 'r') as file:
+        print("Reading the file content:")
+        for sl, line in enumerate(file, start=1):
+            print(f"Line {sl}: {line.strip()}")
+else:
+    print(f"Error: The file '{filename}' was not found.")
